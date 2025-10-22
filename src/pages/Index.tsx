@@ -24,7 +24,7 @@ const Index = () => {
       price: 3500,
       duration: '3 часа',
       level: 'Начинающий',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/10540f89-9f9a-4923-89bb-7199dbf3c4e9.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/09dc16d6-cffa-4791-84d2-916a03288039.jpg'
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ const Index = () => {
       price: 4000,
       duration: '3.5 часа',
       level: 'Средний',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/10540f89-9f9a-4923-89bb-7199dbf3c4e9.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/84c0c283-849c-4e35-b39c-b133527cb481.jpg'
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const Index = () => {
       price: 4500,
       duration: '4 часа',
       level: 'Продвинутый',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/10540f89-9f9a-4923-89bb-7199dbf3c4e9.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/2d686d09-792f-4910-bcf4-fd29fef16e49.jpg'
     },
     {
       id: 4,
@@ -54,7 +54,7 @@ const Index = () => {
       price: 3800,
       duration: '3 часа',
       level: 'Начинающий',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/10540f89-9f9a-4923-89bb-7199dbf3c4e9.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/b51777c3-8a21-4f88-833f-bef276dc6cc2.jpg'
     }
   ];
 
@@ -172,9 +172,16 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {courses.map((course) => (
-              <Card key={course.id} className="hover:shadow-xl transition-shadow border-2 hover:border-primary group">
+              <Card key={course.id} className="hover:shadow-xl transition-shadow border-2 hover:border-primary group overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={course.image} 
+                    alt={course.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 text-5xl">{course.emoji}</div>
+                </div>
                 <CardHeader className="space-y-3">
-                  <div className="text-6xl text-center group-hover:scale-110 transition-transform">{course.emoji}</div>
                   <CardTitle className="text-center">{course.title}</CardTitle>
                   <CardDescription className="text-center">{course.description}</CardDescription>
                 </CardHeader>
