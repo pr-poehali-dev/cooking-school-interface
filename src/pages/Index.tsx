@@ -24,7 +24,7 @@ const Index = () => {
       price: 3500,
       duration: '3 часа',
       level: 'Начинающий',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/5483a9ec-69b9-41f1-890b-6d37afd28bca.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/e7cfd620-c911-4b14-a609-8a6bd2862051.jpg'
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ const Index = () => {
       price: 4000,
       duration: '3.5 часа',
       level: 'Средний',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/3e717cdd-71ac-4895-8789-97feed934e49.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/df0e3cc7-1082-4463-ad67-26cb47a24a71.jpg'
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const Index = () => {
       price: 4500,
       duration: '4 часа',
       level: 'Продвинутый',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/a6c055bc-203d-48a1-927f-a86fb478823e.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/9d0ada4b-8dca-4934-9188-ad463797a322.jpg'
     },
     {
       id: 4,
@@ -54,7 +54,7 @@ const Index = () => {
       price: 3800,
       duration: '3 часа',
       level: 'Начинающий',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/84ad8c21-810b-4bd1-9a03-2b7487c6a882.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/09902e22-8d82-42b1-9264-d2bf9fc2c1a5.jpg'
     }
   ];
 
