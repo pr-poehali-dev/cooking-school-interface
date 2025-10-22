@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
@@ -24,7 +23,7 @@ const Index = () => {
       price: 3500,
       duration: '3 часа',
       level: 'Начинающий',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/e7cfd620-c911-4b14-a609-8a6bd2862051.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/f66e4682-5465-41d0-bb0a-80a67a66416d.jpg'
     },
     {
       id: 2,
@@ -34,7 +33,7 @@ const Index = () => {
       price: 4000,
       duration: '3.5 часа',
       level: 'Средний',
-      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/df0e3cc7-1082-4463-ad67-26cb47a24a71.jpg'
+      image: 'https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/01377932-9ca2-41cf-a9dc-bf662942d5e9.jpg'
     },
     {
       id: 3,
@@ -81,78 +80,93 @@ const Index = () => {
     e.preventDefault();
     toast({
       title: 'Заявка отправлена!',
-      description: 'Мы подтвердим вашу запись в течение часа.',
+      description: 'Мы свяжемся с вами для подтверждения записи.',
     });
-    setBookingForm({ name: '', email: '', phone: '', course: '', date: '' });
     setOpenDialog(false);
+    setBookingForm({ name: '', email: '', phone: '', course: '', date: '' });
   };
 
   return (
     <div className="min-h-screen">
-      <header className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground sticky top-0 z-50 shadow-lg">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Icon name="ChefHat" size={32} className="text-white" />
-            <h1 className="text-2xl font-bold">Culinary School</h1>
-          </div>
-          <nav className="hidden md:flex gap-6">
-            <a href="#home" className="hover:text-accent transition-colors">Главная</a>
-            <a href="#courses" className="hover:text-accent transition-colors">Курсы</a>
-            <a href="#schedule" className="hover:text-accent transition-colors">Расписание</a>
-            <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
-          </nav>
-        </div>
-      </header>
-
-      <section id="home" className="relative bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
-              <h2 className="text-5xl md:text-6xl font-extrabold text-foreground leading-tight">
-                Готовь как <span className="text-primary">профи</span>
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Научим готовить блюда мировой кухни в уютной атмосфере. От новичка до шеф-повара!
-              </p>
-              <div className="flex gap-4 flex-wrap">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold">
-                  <Icon name="Calendar" size={20} className="mr-2" />
-                  Записаться на урок
-                </Button>
-                <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
-                  <Icon name="PlayCircle" size={20} className="mr-2" />
-                  Посмотреть видео
-                </Button>
-              </div>
-              <div className="flex gap-8 pt-4">
-                <div>
-                  <p className="text-3xl font-bold text-primary">500+</p>
-                  <p className="text-muted-foreground">Выпускников</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-secondary">25+</p>
-                  <p className="text-muted-foreground">Курсов</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-accent">10</p>
-                  <p className="text-muted-foreground">Лет опыта</p>
-                </div>
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="text-4xl">👨‍🍳</div>
+              <div>
+                <h1 className="text-2xl font-bold text-primary">Школа Гастрономии</h1>
+                <p className="text-xs text-muted-foreground">Вкус, который останется с вами</p>
               </div>
             </div>
-            <div className="relative animate-scale-in">
-              <img 
-                src="https://cdn.poehali.dev/projects/d95a371d-3eb0-4f50-be71-7fa0368da7be/files/40e73b6d-7603-4eed-9641-843d289c2a35.jpg" 
-                alt="Кулинарная школа" 
-                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl hidden md:block">
-                <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-6">
+              <a href="#courses" className="text-foreground hover:text-primary transition-colors font-medium">Курсы</a>
+              <a href="#schedule" className="text-foreground hover:text-primary transition-colors font-medium">Расписание</a>
+              <a href="#questions" className="text-foreground hover:text-primary transition-colors font-medium">Вопросы</a>
+              <Button className="bg-primary hover:bg-primary/90">
+                <Icon name="Phone" size={16} className="mr-2" />
+                Связаться
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section className="relative py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgZmlsbD0iI2ZmNjYwMCIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-40"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-6 bg-primary text-primary-foreground px-6 py-2 text-base">
+              ✨ Лучшая кулинарная школа 2024
+            </Badge>
+            <h2 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+              Готовьте с Душой!
+            </h2>
+            <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Научим готовить блюда мировой кухни. От классики до авторских рецептов. 
+              Практика с первого занятия!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all">
+                <Icon name="ChefHat" size={20} className="mr-2" />
+                Выбрать курс
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all">
+                <Icon name="Play" size={20} className="mr-2" />
+                Смотреть видео
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mt-16">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex flex-col items-center gap-2">
                   <div className="bg-primary/10 p-3 rounded-full">
-                    <Icon name="Star" size={24} className="text-primary" />
+                    <Icon name="Users" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg">500+</p>
+                    <p className="text-sm text-muted-foreground">Учеников</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-secondary/10 p-3 rounded-full">
+                    <Icon name="Award" size={24} className="text-secondary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg">15+</p>
+                    <p className="text-sm text-muted-foreground">Курсов</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <Icon name="Star" size={24} className="text-accent" />
                   </div>
                   <div>
                     <p className="font-bold text-lg">4.9/5</p>
-                    <p className="text-sm text-muted-foreground">Рейтинг школы</p>
+                    <p className="text-sm text-muted-foreground">Рейтинг</p>
                   </div>
                 </div>
               </div>
@@ -164,50 +178,57 @@ const Index = () => {
       <section id="courses" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Наши курсы</h2>
+            <Badge className="mb-4 bg-secondary text-secondary-foreground">Наши программы</Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Кулинарные Курсы</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Выбирайте направление по душе и становитесь мастером кулинарии
+              Выберите направление и станьте мастером кулинарии за несколько занятий
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {courses.map((course) => (
-              <Card key={course.id} className="hover:shadow-xl transition-shadow border-2 hover:border-primary group overflow-hidden">
+              <Card key={course.id} className="hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary group overflow-hidden hover:-translate-y-1">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={course.image} 
                     alt={course.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 right-4 text-5xl">{course.emoji}</div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute top-4 right-4 text-5xl drop-shadow-lg">{course.emoji}</div>
+                  <Badge className="absolute bottom-4 left-4 bg-white/95 text-foreground">{course.level}</Badge>
                 </div>
                 <CardHeader className="space-y-3">
-                  <CardTitle className="text-center">{course.title}</CardTitle>
-                  <CardDescription className="text-center">{course.description}</CardDescription>
+                  <CardTitle className="text-xl">{course.title}</CardTitle>
+                  <CardDescription className="text-base">{course.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground flex items-center gap-2">
-                      <Icon name="Clock" size={16} />
-                      {course.duration}
-                    </span>
-                    <Badge variant="secondary">{course.level}</Badge>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Icon name="Clock" size={18} />
+                    <span className="font-medium">{course.duration}</span>
                   </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-primary">{course.price} ₽</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-bold text-primary">{course.price} ₽</span>
+                    <span className="text-sm text-muted-foreground">за курс</span>
                   </div>
                 </CardContent>
                 <CardFooter>
                   <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                     <DialogTrigger asChild>
-                      <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => setBookingForm({...bookingForm, course: course.title})}>
-                        Записаться
+                      <Button 
+                        className="w-full bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all" 
+                        onClick={() => setBookingForm({...bookingForm, course: course.title})}
+                      >
+                        <Icon name="CalendarCheck" size={18} className="mr-2" />
+                        Записаться на курс
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Запись на курс: {course.title}</DialogTitle>
-                        <DialogDescription>Заполните форму, и мы свяжемся с вами для подтверждения</DialogDescription>
+                        <DialogTitle className="text-2xl">Запись на: {course.title}</DialogTitle>
+                        <DialogDescription className="text-base">
+                          Заполните форму, и мы свяжемся с вами для подтверждения
+                        </DialogDescription>
                       </DialogHeader>
                       <form onSubmit={handleBookingSubmit} className="space-y-4">
                         <div>
@@ -216,6 +237,7 @@ const Index = () => {
                             value={bookingForm.name}
                             onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
                             required
+                            className="h-12"
                           />
                         </div>
                         <div>
@@ -225,6 +247,7 @@ const Index = () => {
                             value={bookingForm.email}
                             onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
                             required
+                            className="h-12"
                           />
                         </div>
                         <div>
@@ -234,18 +257,21 @@ const Index = () => {
                             value={bookingForm.phone}
                             onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
                             required
+                            className="h-12"
                           />
                         </div>
                         <div>
                           <Input 
                             type="date" 
-                            placeholder="Предпочитаемая дата" 
                             value={bookingForm.date}
                             onChange={(e) => setBookingForm({...bookingForm, date: e.target.value})}
                             required
+                            className="h-12"
                           />
                         </div>
-                        <Button type="submit" className="w-full bg-primary">Отправить заявку</Button>
+                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 h-12 text-base">
+                          Отправить заявку
+                        </Button>
                       </form>
                     </DialogContent>
                   </Dialog>
@@ -256,24 +282,25 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="schedule" className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section id="schedule" className="py-20 bg-gradient-to-br from-muted/50 to-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Расписание занятий</h2>
-            <p className="text-xl text-muted-foreground">
-              Выбирайте удобное время и записывайтесь на уроки
+            <Badge className="mb-4 bg-accent text-accent-foreground">Планируйте занятия</Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Расписание на Неделю</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Выбирайте удобное время для посещения мастер-классов
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="grid gap-4">
               {schedule.map((item, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow border-l-4 border-l-primary">
+                <Card key={index} className="hover:shadow-lg transition-all hover:border-primary border-2 group">
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="bg-primary/10 p-4 rounded-lg">
-                          <Icon name="Calendar" size={24} className="text-primary" />
+                        <div className="bg-primary/10 p-4 rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          <Icon name="CalendarDays" size={24} />
                         </div>
                         <div>
                           <h3 className="font-bold text-lg">{item.day}</h3>
@@ -284,49 +311,13 @@ const Index = () => {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <div>
-                          <p className="font-semibold">{item.course}</p>
-                          <p className="text-sm text-muted-foreground flex items-center gap-1">
+                        <div className="text-right">
+                          <p className="font-semibold text-lg">{item.course}</p>
+                          <p className="text-sm text-muted-foreground flex items-center gap-1 justify-end">
                             <Icon name="Users" size={14} />
-                            Свободно мест: <span className="font-bold text-primary">{item.spots}</span>
+                            Осталось мест: <span className="font-bold text-accent">{item.spots}</span>
                           </p>
                         </div>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button className="bg-primary hover:bg-primary/90">
-                              Записаться
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent>
-                            <DialogHeader>
-                              <DialogTitle>Запись на {item.day}</DialogTitle>
-                              <DialogDescription>{item.course} • {item.time}</DialogDescription>
-                            </DialogHeader>
-                            <form onSubmit={handleBookingSubmit} className="space-y-4">
-                              <Input 
-                                placeholder="Ваше имя" 
-                                value={bookingForm.name}
-                                onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
-                                required
-                              />
-                              <Input 
-                                type="email" 
-                                placeholder="Email" 
-                                value={bookingForm.email}
-                                onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
-                                required
-                              />
-                              <Input 
-                                type="tel" 
-                                placeholder="Телефон" 
-                                value={bookingForm.phone}
-                                onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
-                                required
-                              />
-                              <Button type="submit" className="w-full bg-primary">Подтвердить запись</Button>
-                            </form>
-                          </DialogContent>
-                        </Dialog>
                       </div>
                     </div>
                   </CardContent>
@@ -337,115 +328,148 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-background">
+      <section id="questions" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Есть вопросы?</h2>
+              <Badge className="mb-4 bg-primary text-primary-foreground">Мы здесь, чтобы помочь</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Есть Вопросы?</h2>
               <p className="text-xl text-muted-foreground">
-                Задайте их нам, и мы ответим в течение часа
+                Задайте нам вопрос, и наши менеджеры свяжутся с вами в течение часа
               </p>
             </div>
 
-            <Card className="border-2">
-              <CardContent className="p-8">
+            <Card className="shadow-2xl border-2 hover:border-primary transition-all">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Icon name="MessageCircleQuestion" size={28} className="text-primary" />
+                  Форма обратной связи
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Заполните форму ниже, и мы ответим на все ваши вопросы
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
                 <form onSubmit={handleQuestionSubmit} className="space-y-6">
-                  <div>
-                    <label className="block mb-2 font-semibold">Ваше имя</label>
-                    <Input 
-                      placeholder="Иван Иванов" 
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Ваше имя</label>
+                    <Input
+                      placeholder="Иван Петров"
                       value={questionForm.name}
-                      onChange={(e) => setQuestionForm({...questionForm, name: e.target.value})}
+                      onChange={(e) => setQuestionForm({ ...questionForm, name: e.target.value })}
                       required
+                      className="h-12"
                     />
                   </div>
-                  <div>
-                    <label className="block mb-2 font-semibold">Email</label>
-                    <Input 
-                      type="email" 
-                      placeholder="ivan@example.com" 
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Email для связи</label>
+                    <Input
+                      type="email"
+                      placeholder="ivan@example.com"
                       value={questionForm.email}
-                      onChange={(e) => setQuestionForm({...questionForm, email: e.target.value})}
+                      onChange={(e) => setQuestionForm({ ...questionForm, email: e.target.value })}
                       required
+                      className="h-12"
                     />
                   </div>
-                  <div>
-                    <label className="block mb-2 font-semibold">Ваш вопрос</label>
-                    <Textarea 
-                      placeholder="Расскажите, что вас интересует..." 
-                      rows={5}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Ваш вопрос</label>
+                    <Textarea
+                      placeholder="Расскажите, что вас интересует..."
                       value={questionForm.question}
-                      onChange={(e) => setQuestionForm({...questionForm, question: e.target.value})}
+                      onChange={(e) => setQuestionForm({ ...questionForm, question: e.target.value })}
                       required
+                      className="min-h-[120px] resize-none"
                     />
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 font-semibold">
-                    <Icon name="Send" size={20} className="mr-2" />
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 h-12 text-base shadow-lg hover:shadow-xl transition-all">
+                    <Icon name="Send" size={18} className="mr-2" />
                     Отправить вопрос
                   </Button>
                 </form>
               </CardContent>
             </Card>
 
-            <div className="mt-12 grid md:grid-cols-3 gap-6 text-center">
-              <div className="p-6 bg-primary/5 rounded-xl">
-                <Icon name="Phone" size={32} className="mx-auto mb-3 text-primary" />
-                <p className="font-semibold mb-1">Телефон</p>
-                <p className="text-muted-foreground">+7 (999) 123-45-67</p>
-              </div>
-              <div className="p-6 bg-secondary/5 rounded-xl">
-                <Icon name="Mail" size={32} className="mx-auto mb-3 text-secondary" />
-                <p className="font-semibold mb-1">Email</p>
-                <p className="text-muted-foreground">info@culinary.ru</p>
-              </div>
-              <div className="p-6 bg-accent/5 rounded-xl">
-                <Icon name="MapPin" size={32} className="mx-auto mb-3 text-accent" />
-                <p className="font-semibold mb-1">Адрес</p>
-                <p className="text-muted-foreground">Москва, ул. Кулинарная, 10</p>
-              </div>
+            <div className="mt-12 grid md:grid-cols-3 gap-6">
+              <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                <div className="flex justify-center mb-4">
+                  <div className="bg-primary/10 p-4 rounded-full">
+                    <Icon name="Phone" size={28} className="text-primary" />
+                  </div>
+                </div>
+                <h3 className="font-bold mb-2">Телефон</h3>
+                <p className="text-muted-foreground">+7 (495) 123-45-67</p>
+              </Card>
+              <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                <div className="flex justify-center mb-4">
+                  <div className="bg-secondary/10 p-4 rounded-full">
+                    <Icon name="Mail" size={28} className="text-secondary" />
+                  </div>
+                </div>
+                <h3 className="font-bold mb-2">Email</h3>
+                <p className="text-muted-foreground">info@cookschool.ru</p>
+              </Card>
+              <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                <div className="flex justify-center mb-4">
+                  <div className="bg-accent/10 p-4 rounded-full">
+                    <Icon name="MapPin" size={28} className="text-accent" />
+                  </div>
+                </div>
+                <h3 className="font-bold mb-2">Адрес</h3>
+                <p className="text-muted-foreground">Москва, ул. Повара, 10</p>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-primary via-secondary to-accent text-white py-12">
+      <footer className="bg-foreground text-background py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Icon name="ChefHat" size={32} />
-                <h3 className="text-xl font-bold">Culinary School</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-3xl">👨‍🍳</span>
+                <h3 className="font-bold text-xl">Школа Гастрономии</h3>
               </div>
-              <p className="text-white/80">
-                Учим готовить с любовью и профессионализмом с 2014 года
+              <p className="text-background/70">
+                Лучшая кулинарная школа для тех, кто хочет готовить с душой
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Навигация</h4>
-              <ul className="space-y-2 text-white/80">
-                <li><a href="#home" className="hover:text-white transition-colors">Главная</a></li>
-                <li><a href="#courses" className="hover:text-white transition-colors">Курсы</a></li>
-                <li><a href="#schedule" className="hover:text-white transition-colors">Расписание</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Контакты</a></li>
+              <h4 className="font-bold mb-4">Курсы</h4>
+              <ul className="space-y-2 text-background/70">
+                <li>Итальянская кухня</li>
+                <li>Азиатская кухня</li>
+                <li>Французская кухня</li>
+                <li>Десерты и выпечка</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Мы в соцсетях</h4>
+              <h4 className="font-bold mb-4">Информация</h4>
+              <ul className="space-y-2 text-background/70">
+                <li>О школе</li>
+                <li>Наши повара</li>
+                <li>Отзывы</li>
+                <li>Контакты</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Социальные сети</h4>
               <div className="flex gap-4">
-                <Button variant="outline" size="icon" className="bg-white/10 border-white/20 hover:bg-white/20 text-white">
+                <div className="bg-background/10 p-3 rounded-full hover:bg-background/20 transition-colors cursor-pointer">
                   <Icon name="Instagram" size={20} />
-                </Button>
-                <Button variant="outline" size="icon" className="bg-white/10 border-white/20 hover:bg-white/20 text-white">
+                </div>
+                <div className="bg-background/10 p-3 rounded-full hover:bg-background/20 transition-colors cursor-pointer">
                   <Icon name="Facebook" size={20} />
-                </Button>
-                <Button variant="outline" size="icon" className="bg-white/10 border-white/20 hover:bg-white/20 text-white">
+                </div>
+                <div className="bg-background/10 p-3 rounded-full hover:bg-background/20 transition-colors cursor-pointer">
                   <Icon name="Youtube" size={20} />
-                </Button>
+                </div>
               </div>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8 text-center text-white/80">
-            <p>© 2024 Culinary School. Все права защищены.</p>
+          <div className="border-t border-background/20 pt-8 text-center text-background/70">
+            <p>© 2024 Школа Гастрономии. Все права защищены.</p>
           </div>
         </div>
       </footer>
